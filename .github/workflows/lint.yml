@@ -1,0 +1,36 @@
+name: check lint and format
+on: [push, pull_request]
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # repeat same job for each subsystem in the following subdirectories
+        subdir: [web-app, machine-learning-client]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10" # update version(s) as needed
+      - name: Install dependencies
+        if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
+        run: |
+          cd ${{ matrix.subdir }}
+          python -m pip install --upgrade pip
+          python -m pip install pipenv
+          pipenv sync --dev --python $(which python)
+          pipenv shell --fancy --python $(which python)
+      - name: Lint with pylint
+        if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
+        # you may set pylint to ignore any files or dependencies that make no sense to lint
+        run: |
+          cd ${{ matrix.subdir }}
+          pipenv run pylint **/*.py
+      - name: Format with black
+        if: ${{ hashFiles(format('{0}/**/*.py', matrix.subdir)) != '' }}
+        # you may set black to ignore any files or dependencies that make no sense to format
+        run: |
+          cd ${{ matrix.subdir }}
+          pipenv run black --diff --check .
