@@ -8,7 +8,6 @@ black = "*"
 pylint = "*"
 
 [dev-packages]
-sjsjsjsjsj 
 
 [requires]
 python_version = "3.10"
