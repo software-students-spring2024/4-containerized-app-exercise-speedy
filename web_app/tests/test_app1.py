@@ -3,7 +3,7 @@ file to test app
 '''
 # import pytest
 
-# from app import *
+from web_app.app import *
 
 class Tests:
     '''

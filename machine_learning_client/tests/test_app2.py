@@ -3,7 +3,7 @@ file to test app
 '''
 # import pytest
 
-# from app import *
+from machine_learning_client.app import *
 
 class Tests:
     '''
