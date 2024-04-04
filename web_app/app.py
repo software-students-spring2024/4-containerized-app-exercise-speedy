@@ -12,11 +12,17 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def display():
+    """
+    default page
+    """
     return "display images here"
 
 
 @app.route("/", methods=["GET", "POST"])
 def image_capture():
+    """
+    page for taking picture and sending to machine learning client
+    """
     return "take picture here"
 
 
