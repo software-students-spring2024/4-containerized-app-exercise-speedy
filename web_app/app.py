@@ -11,19 +11,27 @@ app = Flask(__name__)
 
 
 @app.route("/", methods=["GET", "POST"])
-def display():
+def index():
     """
     default page
     """
-    return "display images here"
+    return "default page"
 
 
-@app.route("/", methods=["GET", "POST"])
-def image_capture():
+@app.route("/display")
+def display():
     """
-    page for taking picture and sending to machine learning client
+    This will render the display.html template which shows the results after the ML client.
     """
-    return "take picture here"
+    pass
+
+
+@app.route("/upload_image", methods=["POST"])
+def upload_image():
+    """
+    Send the initial unprocessed image to MongoDB.
+    """
+    return "photo saved"
 
 
 # run the app
