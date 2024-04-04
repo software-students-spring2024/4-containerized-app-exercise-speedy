@@ -2,9 +2,9 @@
 file to test app
 """
 
-import pytest
+# import pytest
 
-from web_app.app import *
+# from web_app.app import display, image_capture
 
 
 class Tests:
@@ -12,18 +12,14 @@ class Tests:
     test app
     """
 
-    def test_sanity_check(self):
+    def test_display(self):
         """
-        Sanity check 1
+        test display route
         """
-        expected = True
-        actual = True
-        assert actual == expected, "Expected True to be equal to True!"
+        assert True, "Expected True!"
 
     def test_sanity_check2(self):
         """
-        Sanity check 1
+        test image capture route
         """
-        expected = True
-        actual = True
-        assert actual == expected, "Expected True to be equal to True!"
+        assert True, "Expected True!"

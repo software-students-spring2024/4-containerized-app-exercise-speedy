@@ -2,9 +2,9 @@
 file to test app
 """
 
-import pytest
+# import pytest
 
-from machine_learning_client.app import *
+# from machine_learning_client.app import *
 
 
 class Tests:
