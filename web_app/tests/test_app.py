@@ -2,7 +2,7 @@
 file to test app
 """
 
-# import pytest
+import pytest
 
 from web_app.app import *
 
