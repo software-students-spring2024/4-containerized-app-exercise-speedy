@@ -6,6 +6,7 @@ corresponding emoji detected by the machine learning model.
 """
 
 from flask import Flask
+import os
 
 app = Flask(__name__)
 

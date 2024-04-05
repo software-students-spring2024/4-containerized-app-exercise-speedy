@@ -1,5 +1,11 @@
 ![Lint-free](https://github.com/nyu-software-engineering/containerized-app-exercise/actions/workflows/lint.yml/badge.svg)
 
+# To build + run docker image locally for web_app:
+docker build -t web_app_image .
+docker run -it --rm --name web_app_container web_app_image
+
+from here: https://hub.docker.com/_/python
+
 
 # Real-Time Hand Gesture Recognition Web App
 
