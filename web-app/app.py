@@ -1,3 +1,0 @@
-"""testing docker"""
-
-print("hello")
