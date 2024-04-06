@@ -1,0 +1,31 @@
+name: web_app CI / CD
+on: [pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          cd web_app
+          python -m pip install --upgrade pip
+          pip install --user pipenv
+          pipenv --python ${{ matrix.python-version }}
+          pipenv install pytest
+          pipenv install
+      - name: Turn on 'editable' mode
+        run: |
+          cd web_app
+          pipenv install -e .
+      - name: Test with pytest
+        run: |
+          cd web_app
+          pipenv run python -m pytest
