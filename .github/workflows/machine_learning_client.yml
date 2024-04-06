@@ -1,0 +1,31 @@
+name: machine_learning_client CI / CD
+on: [pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          cd machine_learning_client
+          python -m pip install --upgrade pip
+          pip install --user pipenv
+          pipenv --python ${{ matrix.python-version }}
+          pipenv install pytest
+          pipenv install
+      - name: Turn on 'editable' mode
+        run: |
+          cd machine_learning_client
+          pipenv install -e .
+      - name: Test with pytest
+        run: |
+          cd machine_learning_client
+          pipenv run python -m pytest
