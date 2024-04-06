@@ -1,4 +1,6 @@
-![Lint-free](https://github.com/nyu-software-engineering/containerized-app-exercise/actions/workflows/lint.yml/badge.svg)
+![lint-free](https://github.com/software-students-spring2024/4-containerized-app-exercise-speedy/actions/workflows/lint.yml/badge.svg)
+![web_app CI/CD](https://github.com/software-students-spring2024/4-containerized-app-exercise-speedy/actions/workflows/web_app.yml/badge.svg)
+![machine_learning_client CI/CD](https://github.com/software-students-spring2024/4-containerized-app-exercise-speedy/actions/workflows/machine_learning_client.yml/badge.svg)
 
 # To build + run docker image locally for web_app:
 docker build -t web_app_image .
