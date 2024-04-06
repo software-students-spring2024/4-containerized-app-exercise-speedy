@@ -4,7 +4,7 @@ Users can access the web app through their browser, use their
 device's camera to take pictures of hand gestures, and see the
 corresponding emoji detected by the machine learning model.
 """
-
+import os
 from flask import Flask
 
 app = Flask(__name__)
@@ -23,7 +23,6 @@ def display():
     """
     This will render the display.html template which shows the results after the ML client.
     """
-    pass
 
 
 @app.route("/upload_image", methods=["POST"])
