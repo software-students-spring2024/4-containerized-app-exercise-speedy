@@ -4,6 +4,7 @@ Users can access the web app through their browser, use their
 device's camera to take pictures of hand gestures, and see the
 corresponding emoji detected by the machine learning model.
 """
+
 import os
 from flask import Flask
 
