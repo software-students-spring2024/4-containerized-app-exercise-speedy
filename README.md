@@ -2,10 +2,14 @@
 
 # To build + run docker image locally for web_app:
 docker build -t web_app_image .
+
 docker run -it --rm --name web_app_container web_app_image
 
 from here: https://hub.docker.com/_/python
 
+# To build + run docker image locally for db:
+
+docker run --name mongodb -d -p 27017:27017 mongo
 
 # Real-Time Hand Gesture Recognition Web App
 
