@@ -6,7 +6,7 @@ corresponding emoji detected by the machine learning model.
 """
 
 import os
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -16,7 +16,7 @@ def index():
     """
     default page
     """
-    return "default page"
+    return render_template("upload_image.html")
 
 
 @app.route("/display")
