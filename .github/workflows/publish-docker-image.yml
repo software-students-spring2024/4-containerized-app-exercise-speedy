@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - auto-push-docker-image
 
 jobs:
   push_to_registry:
