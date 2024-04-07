@@ -9,6 +9,8 @@ docker run -it --rm --name web_app_container web_app_image
 
 from here: https://hub.docker.com/_/python
 
+The web-app image is also available on the Docker Hub at [iltenahmet/web-app](https://hub.docker.com/r/iltenahmet/web-app)
+
 # To build + run docker image locally for db:
 
 docker run --name mongodb -d -p 27017:27017 mongo
