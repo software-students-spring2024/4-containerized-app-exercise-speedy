@@ -7,11 +7,14 @@ corresponding emoji representation of the gesture.
 """
 
 from flask import Flask
+import cv2
+import mediapipe
 
 app = Flask(__name__)
 
 # add functions for machine leanring client
 
+test_image = cv2.imread("path_to_image.jpg")
 
 # run the app
 if __name__ == "__main__":
