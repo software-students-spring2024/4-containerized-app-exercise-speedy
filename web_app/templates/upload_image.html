@@ -2,41 +2,55 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-    <style>
-        #container {
-            margin: 0px auto;
-            width: 500px;
-            height: 375px;
-            border: 10px #333 solid;
-        }
-        #videoElement {
-            width: 500px;
-            height: 375px;
-            background-color: #666;
-        }
-    </style>
-    <p> take a picture with webcam to find emoji match </p>
+        <p> take a picture with webcam to find emoji match </p>
+        <button id="btn-start-camera">Start Camera</button>
+        <video id="video" width="500" height="400" autoplay></video>
+        <button id="take-snapshot">Take Snapshot</button>
+        <div id="dataurl-container">
+            <canvas id="canvas" width="500" height="400"></canvas>
+            <div id="dataurl-header">Image Data URL</div>
+            <textarea id="dataurl" readonly></textarea>
+        </div>
 
-    <div id="container">
-        <video autoplay="true" id="videoElement">
-        
-        </video>
-    </div>
-  
+
     <script>
-        var video = document.querySelector("#videoElement");
+        let btn_start_camera = document.querySelector("#btn-start-camera");
+        let video = document.querySelector("#video");
+        let btn_take_snapshot = document.querySelector("#take-snapshot");
+        let canvas = document.querySelector("#canvas");
+        let dataurl = document.querySelector("#dataurl");
+        let dataurl_container = document.querySelector("#dataurl-container");
 
-        if (navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: true })
-            .then(function (stream) {
+        // start camera
+        btn_start_camera.addEventListener('click', async function() {
+            let stream = null;
+
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+            }
+            catch(error) {
+                alert(error.message);
+                return;
+            }
+
             video.srcObject = stream;
-            })
-            .catch(function (err0r) {
-            console.log("Something went wrong!");
-            });
-        }
-        // Flip the video horizontally
-        video.style.transform = "scaleX(-1)";
+
+            video.style.display = 'block';
+            btn_start_camera.style.display = 'none';
+            btn_take_snapshot.style.display = 'block';
+        });
+
+        // take the snapshot
+        btn_take_snapshot.addEventListener('click', function() {
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            let image_data_url = canvas.toDataURL('image/jpeg');
+            
+            dataurl.value = image_data_url;
+            dataurl_container.style.display = 'block';
+            // sent to database image_data_url
+        });
+
+        
 
     </script>
 
