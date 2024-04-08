@@ -6,7 +6,7 @@ corresponding emoji detected by the machine learning model.
 """
 
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, request, url_for
 from pymongo import MongoClient
 
 app = Flask(__name__)
@@ -38,7 +38,9 @@ def upload_image():
     """
     Send the initial unprocessed image to MongoDB.
     """
-    return "photo saved"
+    image_data = request.form["image_data"]
+    db.images.insert_one({"image_data": image_data})
+    return redirect(url_for("display"))
 
 
 # run the app

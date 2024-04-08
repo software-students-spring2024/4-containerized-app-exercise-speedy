@@ -2,16 +2,29 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-        <p> take a picture with webcam to find emoji match </p>
-        <button id="btn-start-camera">Start Camera</button>
-        <video id="video" width="500" height="400" autoplay></video>
-        <button id="take-snapshot">Take Snapshot</button>
-        <div id="dataurl-container">
-            <canvas id="canvas" width="500" height="400"></canvas>
-            <div id="dataurl-header">Image Data URL</div>
-            <textarea id="dataurl" readonly></textarea>
-        </div>
 
+    <p> take a picture with webcam to find emoji match </p>
+    <button id="btn-start-camera">Start Camera</button>
+    <video id="video" width="500" height="400" autoplay></video>
+    <button id="take-snapshot">Take Snapshot</button>
+    <div id="dataurl-container">
+        <canvas id="canvas" width="500" height="400"></canvas>
+        <div id="dataurl-header">Image Data URL</div>
+        <textarea id="dataurl" readonly></textarea>
+    </div>
+ 
+    <form action="{{ url_for('upload_image') }}" method="POST" enctype="multipart/form-data" id="imageForm">
+        <input type="hidden" name="image_data" id="imageData">
+        <input type="submit" value="Submit">
+    </form>
+
+
+    <!-- <p> or upload picture </p>
+    <form action="{{ url_for('display') }}">
+        <label for="img">Select image:</label>
+        <input type="file" id="img" name="img" accept="image/*">
+        <input type="submit">
+    </form> -->
 
     <script>
         let btn_start_camera = document.querySelector("#btn-start-camera");
@@ -38,7 +51,10 @@
             video.style.display = 'block';
             btn_start_camera.style.display = 'none';
             btn_take_snapshot.style.display = 'block';
+            // Flip the video horizontally
+            video.style.transform = "scaleX(-1)";
         });
+        
 
         // take the snapshot
         btn_take_snapshot.addEventListener('click', function() {
@@ -47,17 +63,11 @@
             
             dataurl.value = image_data_url;
             dataurl_container.style.display = 'block';
-            // sent to database image_data_url
-        });
 
-        
+            // Submit the form to upload the image
+            document.getElementById('imageData').value = image_data_url.split(',')[1];
+        });
 
     </script>
 
-    <p> or upload picture </p>
-    <form action="{{ url_for('display') }}">
-        <label for="img">Select image:</label>
-        <input type="file" id="img" name="img" accept="image/*">
-        <input type="submit">
-    </form>
 {% endblock %}
