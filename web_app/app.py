@@ -7,8 +7,13 @@ corresponding emoji detected by the machine learning model.
 
 import os
 from flask import Flask, render_template
+from pymongo import MongoClient
 
 app = Flask(__name__)
+
+# Connect to MongoDB
+client = MongoClient("mongodb://mongodb:27017/")
+db = client.test
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -24,6 +29,8 @@ def display():
     """
     This will render the display.html template which shows the results after the ML client.
     """
+    images = db.images.find()
+    return render_template("display.html", images=images)
 
 
 @app.route("/upload_image", methods=["POST"])
