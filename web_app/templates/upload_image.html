@@ -15,6 +15,7 @@
             background-color: #666;
         }
     </style>
+    <p> take a picture with webcam to find emoji match </p>
 
     <div id="container">
         <video autoplay="true" id="videoElement">
@@ -34,5 +35,15 @@
             console.log("Something went wrong!");
             });
         }
+        // Flip the video horizontally
+        video.style.transform = "scaleX(-1)";
+
     </script>
+
+    <p> or upload picture </p>
+    <form action="{{ url_for('display') }}">
+        <label for="img">Select image:</label>
+        <input type="file" id="img" name="img" accept="image/*">
+        <input type="submit">
+    </form>
 {% endblock %}
