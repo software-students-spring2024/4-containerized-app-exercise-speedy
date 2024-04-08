@@ -2,7 +2,11 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-
-<!-- write code here -->
+    <p> upload picture of hand gesture to find emoji match</p>
+    <form action="{{ url_for('display') }}">
+        <label for="img">Select image:</label>
+        <input type="file" id="img" name="img" accept="image/*">
+        <input type="submit">
+    </form>
 
 {% endblock %}

@@ -3,6 +3,15 @@
 
 {% block body %}
 
-<!-- write code here -->
+    {% for image in images %}
+        <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <img src="data:image/jpeg;base64,{{ image.image_data }}" class="card-img-top" alt="{{ image.filename }}">
+            <div class="card-body">
+            <p class="card-text">{{ image.filename }}</p>
+            </div>
+        </div>
+        </div>
+    {% endfor %}
 
 {% endblock %}
