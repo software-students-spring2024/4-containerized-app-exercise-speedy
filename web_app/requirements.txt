@@ -3,3 +3,4 @@ pymongo
 pylint
 black
 pytest
+coverage
