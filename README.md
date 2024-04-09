@@ -8,7 +8,7 @@
 
 `docker run -it --rm --name web_app_container web_app_image`
 
-from here: https://hub.docker.com/_/python
+from here https://hub.docker.com/_/python
 
 The web-app image is also available on the Docker Hub at [iltenahmet/web-app](https://hub.docker.com/r/iltenahmet/web-app)
 
