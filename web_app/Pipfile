@@ -9,6 +9,7 @@ flask = "*"
 pylint = "*"
 black = "*"
 pytest = "*"
+coverage = "*"
 
 [dev-packages]
 
