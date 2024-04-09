@@ -1,6 +1,6 @@
 ''' Module for testing app.py. '''
 
-from app import app
+from web_app.app import app
 
 class Tests:
     ''' Class for testing app.py '''
