@@ -39,7 +39,7 @@ def upload_image():
     Send the initial unprocessed image to MongoDB.
     """
     image_data = request.form["image_data"]
-    if (image_data != "test"):
+    if image_data != "test":
         db.images.insert_one({"image_data": image_data})
     return redirect(url_for("display"))
 
