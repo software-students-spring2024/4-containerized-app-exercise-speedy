@@ -9,7 +9,6 @@ flask = "*"
 pylint = "*"
 black = "*"
 opencv-python = "*"
-mediapipe = "*"
 
 [dev-packages]
 
