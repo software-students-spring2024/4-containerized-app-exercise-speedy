@@ -1,1 +1,5 @@
 Flask
+pymongo
+pylint
+black
+pytest
