@@ -9,6 +9,7 @@ corresponding emoji representation of the gesture.
 from flask import Flask
 import cv2
 import mediapipe as mp
+import os
 
 app = Flask(__name__)
 
@@ -27,6 +28,7 @@ class HandGestureDetector:
         self.max_num_hands = max_num_hands
         self.min_detection_confidence = min_detection_confidence
         self.min_tracking_confidence = min_tracking_confidence
+        print("init test")
 
         '''
         self.mp_hands = mp.solutions.hands
@@ -49,7 +51,7 @@ class HandGestureDetector:
         )
 
     def gesture_recognition(self, image):
-        image = cv2.imread("images/test_image1.png")
+        image = cv2.imread(image)
         image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
         '''
@@ -79,8 +81,11 @@ class HandGestureDetector:
                 elif gesture.label == 'Thumb_Down':
                     print("Thumbs down!")
 
+        print("gesture recog test")
+
 
     def determine_emoji(self, hand_state):
+        print("emoji test")
         if hand_state == 0:
             return "No emoji detected"
         elif hand_state == 1:
@@ -99,8 +104,16 @@ class HandGestureDetector:
             return "I love you! 👍"
         return "None"
 
+def main():
+    print("main test")
+    detector = HandGestureDetector()
+    output = detector.gesture_recognition("images/test_image1.png")
+    print(output, "+", output)
+
+
 
 # run the app
 if __name__ == "__main__":
+    main()
     FLASK_PORT = os.getenv("FLASK_PORT", "5000")
     app.run(port=FLASK_PORT)
