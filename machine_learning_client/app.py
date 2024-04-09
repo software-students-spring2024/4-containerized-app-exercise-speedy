@@ -28,6 +28,7 @@ class HandGestureDetector:
         self.min_detection_confidence = min_detection_confidence
         self.min_tracking_confidence = min_tracking_confidence
 
+        '''
         self.mp_hands = mp.solutions.hands
         self.hands = self.mp_hands.Hands(
             self.static_image_mode,
@@ -35,11 +36,23 @@ class HandGestureDetector:
             self.min_detection_confidence,
             self.min_tracking_confidence,
         )
+        '''
+
+        # Initialize MediaPipe gesture module
+        self.mp_gesture = mp.solutions.gesture
+        self.gesture = self.mp_gesture.Gesture(
+            static_image_mode=False,
+            max_num_hands=1,
+            gesture_model_context=self.mp_gesture.GestureModelContext(
+                min_tracking_confidence=0.5
+            ),
+        )
 
     def gesture_recognition(self, image):
         image = cv2.imread("images/test_image1.png")
         image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
+        '''
         # Process image using MediaPipe hands module
         results = self.hands.process(image_rgb)
 
@@ -50,6 +63,22 @@ class HandGestureDetector:
 
         # If no hand or gesture detected
         return 0
+        '''
+
+        # Process image using MediaPipe gesture module
+        gesture_results = self.gesture.process(image_rgb)
+
+        # If gesture(s) detected
+        if gesture_results.multi_handedness:
+            # Iterate through detected gestures
+            for _, gesture in zip(gesture_results.multi_handedness, gesture_results.multi_gestures):
+                num = 0
+                # Classify gesture
+                if gesture.label == 'Thumb_Up':
+                    print("Thumbs up!")
+                elif gesture.label == 'Thumb_Down':
+                    print("Thumbs down!")
+
 
     def determine_emoji(self, hand_state):
         if hand_state == 0:
@@ -68,6 +97,7 @@ class HandGestureDetector:
             return "Hello! 👋"
         elif hand_state == 7:
             return "I love you! 👍"
+        return "None"
 
 
 # run the app
