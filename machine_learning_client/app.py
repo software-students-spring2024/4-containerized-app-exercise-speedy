@@ -105,11 +105,13 @@ class HandGestureDetector:
             return "I love you! 👍"
         return "None"
 
+
 def main():
     print("main test")
     detector = HandGestureDetector()
     output = detector.gesture_recognition("images/test_image1.png")
     print(output, "+", output)
+
 
 # run the app
 if __name__ == "__main__":
