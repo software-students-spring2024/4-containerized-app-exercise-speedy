@@ -29,8 +29,8 @@ jobs:
         run: |
           cd web_app
           pipenv run python -m pytest
-  services:
-    mongodb:
-      image: mongo
-      ports:
-        - 27017:27017
+    services:
+      mongodb:
+        image: mongo
+        ports:
+          - 27017:27017
