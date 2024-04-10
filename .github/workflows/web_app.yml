@@ -20,19 +20,3 @@ jobs:
         docker run --name mongodb -d -p 27017:27017 --network project4 mongo
         docker build -t test_image . 
         docker run -it --rm --name test_container --network project4 test_image 
-      - name: Install dependencies
-        run: |
-          cd web_app
-          python -m pip install --upgrade pip
-          pip install --user pipenv
-          pipenv --python ${{ matrix.python-version }}
-          pipenv install pytest
-          pipenv install
-      - name: Turn on 'editable' mode
-        run: |
-          cd web_app
-          pipenv install -e .
-      - name: Test with pytest
-        run: |
-          cd web_app
-          pipenv run python -m pytest
