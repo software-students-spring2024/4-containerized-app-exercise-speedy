@@ -17,13 +17,15 @@ app = Flask(__name__)
 
 # add functions for machine leanring client
 
+
 def get_emoji_from_image(image_url):
     """
     Takes an image URL as input and returns an emoji representing the detected hand gesture.
     """
     label = generate_label(image_url)
-    emoji_output = determine_emoji(label)
-    return emoji_output
+    # emoji_output = determine_emoji(label)
+    # return emoji_output
+    return label
 
 
 def generate_label(image_url):
@@ -38,7 +40,7 @@ def generate_label(image_url):
         file.write(response.content)
 
     # Create the GestureRecognizer object
-    base_options = python.BaseOptions(model_asset_path='gesture_recognizer.task')
+    base_options = python.BaseOptions(model_asset_path="gesture_recognizer.task")
     options = vision.GestureRecognizerOptions(base_options=base_options)
     recognizer = vision.GestureRecognizer.create_from_options(options)
 
@@ -53,27 +55,30 @@ def generate_label(image_url):
     return category_name
 
 
-def determine_emoji(self, hand_state):
+'''
+def determine_emoji(self, hand_label):
     """
     Determines the appropriate emoji based on the given hand gesture label.
     """
-    if hand_state == 0:
+    if hand_label == 0:
         return "No emoji detected"
-    elif hand_state == 1:
+    if hand_label == 1:
         return "Thumbs up! 👍"
-    elif hand_state == 2:
+    elif hand_label == 2:
         return "Thumbs down! 👎"
-    elif hand_state == 3:
+    elif hand_label == 3:
         return "Peace! ✌️"
-    elif hand_state == 4:
+    elif hand_label == 4:
         return "Finger up! ☝️"
-    elif hand_state == 5:
+    elif hand_label == 5:
         return "Right on! ✊"  # maybe change the wording here
-    elif hand_state == 6:
+    elif hand_label == 6:
         return "Hello! 👋"
-    elif hand_state == 7:
+    elif hand_label == 7:
         return "I love you! 👍"
     return "None"
+'''
+
 
 # run the app
 if __name__ == "__main__":
