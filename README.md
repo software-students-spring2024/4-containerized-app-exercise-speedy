@@ -22,7 +22,7 @@ From the root dir, run
 
 The two containers are now connected through a docker network.
 
-The web-app image is also available on the Docker Hub at [iltenahmet/web-app](https://hub.docker.com/r/iltenahmet/web-app)
+The web-app image is also available on the Docker Hub at [iltenahmet/web-app:main](https://hub.docker.com/r/iltenahmet/web-app)
 
 # Real-Time Hand Gesture Recognition Web App
 
