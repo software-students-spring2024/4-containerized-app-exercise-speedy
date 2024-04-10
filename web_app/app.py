@@ -12,7 +12,7 @@ from pymongo import MongoClient
 app = Flask(__name__)
 
 # Connect to MongoDB
-client = MongoClient("mongodb://mongodb:27017/")
+client = MongoClient(os.getenv("MONGO_URI", "mongodb://mongodb:27017/"))
 db = client.test
 
 

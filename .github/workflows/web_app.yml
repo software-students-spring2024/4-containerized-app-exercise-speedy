@@ -1,5 +1,7 @@
 name: web_app CI / CD
 on: [pull_request]
+env:
+  MONGO_URI: "mongodb://localhost:27017/"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,3 +31,8 @@ jobs:
         run: |
           cd web_app
           pipenv run python -m pytest
+    services:
+      mongodb:
+        image: mongo
+        ports:
+          - 27017:27017
