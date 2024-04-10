@@ -3,6 +3,12 @@
 ![machine_learning_client CI/CD](https://github.com/software-students-spring2024/4-containerized-app-exercise-speedy/actions/workflows/machine_learning_client.yml/badge.svg)
 ![web_app Docker Image](https://github.com/software-students-spring2024/4-containerized-app-exercise-speedy/actions/workflows/publish-docker-image.yml/badge.svg)
 
+# To build + run:
+
+From the root dir, run
+
+`docker compose up --build`
+
 # To build + run docker image locally for web_app + db:
 `docker network create project4`
 
