@@ -13,10 +13,24 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-    
-      - name: Set up docker network, mongodb container, test container
+      - name: Install dependencies
         run: |
-        docker network create project4
-        docker run --name mongodb -d -p 27017:27017 --network project4 mongo
-        docker build -t test_image . 
-        docker run -it --rm --name test_container --network project4 test_image 
+          cd web_app
+          python -m pip install --upgrade pip
+          pip install --user pipenv
+          pipenv --python ${{ matrix.python-version }}
+          pipenv install pytest
+          pipenv install
+      - name: Turn on 'editable' mode
+        run: |
+          cd web_app
+          pipenv install -e .
+      - name: Test with pytest
+        run: |
+          cd web_app
+          pipenv run python -m pytest
+  services:
+    mongodb:
+      image: mongo
+      ports:
+        - 27017:27017
