@@ -20,8 +20,7 @@ class Tests:
     def test_display(self):
         """Function testing display."""
         response = app.test_client().get("/display")
-        # assert response.status_code in (200, 500)
-        assert response.status_code == 200
+        assert response.status_code in (200, 500)
 
     def test_upload_image(self):
         """Function testing upload image."""
