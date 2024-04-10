@@ -13,6 +13,13 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
+    
+      - name: Set up docker network, mongodb container, test container
+        run: |
+        docker network create project4
+        docker run --name mongodb -d -p 27017:27017 --network project4 mongo
+        docker build -t test_image . 
+        docker run -it --rm --name test_container --network project4 test_image 
       - name: Install dependencies
         run: |
           cd web_app
