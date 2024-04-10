@@ -10,6 +10,7 @@ pylint = "*"
 black = "*"
 pytest = "*"
 coverage = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

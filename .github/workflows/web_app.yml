@@ -1,5 +1,7 @@
 name: web_app CI / CD
 on: [pull_request]
+env:
+  MONGO_URI: "mongodb://localhost:27017/"
 jobs:
   build:
     runs-on: ubuntu-latest
