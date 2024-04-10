@@ -3,18 +3,18 @@
 ![machine_learning_client CI/CD](https://github.com/software-students-spring2024/4-containerized-app-exercise-speedy/actions/workflows/machine_learning_client.yml/badge.svg)
 ![web_app Docker Image](https://github.com/software-students-spring2024/4-containerized-app-exercise-speedy/actions/workflows/publish-docker-image.yml/badge.svg)
 
-# To build + run docker image locally for web_app:
+# To build + run docker image locally for web_app + db:
+`docker network create project4`
+
 `docker build -t web_app_image .`
 
-`docker run -it --rm --name web_app_container web_app_image`
+`docker run -it --rm --name web_app_container -p 5000:5000 --network project4 web_app_image`
 
-from here: https://hub.docker.com/_/python
+`docker run --name mongodb -d -p 27017:27017 --network project4 mongo`
+
+The two containers are now connected through a docker network.
 
 The web-app image is also available on the Docker Hub at [iltenahmet/web-app](https://hub.docker.com/r/iltenahmet/web-app)
-
-# To build + run docker image locally for db:
-
-`docker run --name mongodb -d -p 27017:27017 mongo`
 
 # Real-Time Hand Gesture Recognition Web App
 

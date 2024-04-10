@@ -12,7 +12,7 @@ from pymongo import MongoClient
 app = Flask(__name__)
 
 # Connect to MongoDB
-client = MongoClient("mongodb://localhost:27017/")
+client = MongoClient("mongodb://mongodb:27017/")
 db = client.test
 
 
@@ -47,4 +47,4 @@ def upload_image():
 # run the app
 if __name__ == "__main__":
     FLASK_PORT = os.getenv("FLASK_PORT", "5000")
-    app.run(port=FLASK_PORT)
+    app.run(port=FLASK_PORT, host="0.0.0.0")
