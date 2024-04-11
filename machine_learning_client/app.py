@@ -12,10 +12,14 @@ from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 import requests
 import os
+from pymongo import MongoClient
+
 
 app = Flask(__name__)
 
-# add functions for machine leanring client
+# Connect to MongoDB
+client = MongoClient(os.getenv("MONGO_URI", "mongodb://mongodb:27017/"))
+db = client.test
 
 
 def get_emoji_from_image(image_url):
@@ -80,7 +84,13 @@ def determine_emoji(self, hand_label):
 '''
 
 
+def get_image():
+    images = db.images.find().sort([("upload_date", -1)]).limit(1)
+    last_image = images[0]["image_data"]
+    return last_image
+
+
 # run the app
 if __name__ == "__main__":
-    FLASK_PORT = os.getenv("FLASK_PORT", "5000")
-    app.run(port=FLASK_PORT)
+    FLASK_PORT = os.getenv("FLASK_PORT", "5002")
+    app.run(port=FLASK_PORT, host="0.0.0.0")
