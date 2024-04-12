@@ -9,7 +9,7 @@ From the root dir, run
 
 `docker compose up --build`
 
-# To build + run docker image locally for ml_client + web_app + db:
+# To build + run docker containers locally for ml_client + web_app + db:
 
 In one terminal,
 
