@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "9a4540bda3b78f2fb56b153206b8657df55b8c3bc39a69a6ba9fca20ccc3f382"
+            "sha256": "5c78348ba989dd5f6357f71c58ea9e5fd94c82d01568cd69579708a4284d6fc9"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3"
+            "python_version": "3.10"
         },
         "sources": [
             {
@@ -310,7 +310,7 @@
                 "sha256:3ebe3c479ad625c4553aca177444d89b486b1d84982eeacded644afc0cf797ca",
                 "sha256:c36ca9ffb54365bdd2f8eb3eff7d2a21237f8452b57ace88b1ac615b7e815bd7"
             ],
-            "markers": "python_version >= '3.11'",
+            "markers": "python_version < '3.11'",
             "version": "==0.3.8"
         },
         "dnspython": {
@@ -403,11 +403,11 @@
         },
         "idna": {
             "hashes": [
-                "sha256:9ecdbbd083b06798ae1e86adcbfe8ab1479cf864e4ee30fe4e46a003d12491ca",
-                "sha256:c05567e9c24a6b9faaa835c4821bad0590fbb9d5779e7caa6e1cc4978e7eb24f"
+                "sha256:028ff3aadf0609c1fd278d8ea3089299412a7a8b9bd005dd08b9f8285bcb5cfc",
+                "sha256:82fee1fc78add43492d3a1898bfa6d8a904cc97d8427f683ed8e798d07761aa0"
             ],
             "markers": "python_version >= '3.5'",
-            "version": "==3.6"
+            "version": "==3.7"
         },
         "isort": {
             "hashes": [
@@ -792,7 +792,7 @@
                 "sha256:f870204a840a60da0b12273ef34f7051e98c3b5961b61b0c2c1be6dfd64fbcd3",
                 "sha256:ffa75af20b44f8dba823498024771d5ac50620e6915abac414251bd971b4529f"
             ],
-            "markers": "python_version >= '3.9'",
+            "markers": "python_version >= '3.10'",
             "version": "==1.26.4"
         },
         "opencv-contrib-python": {
@@ -1146,6 +1146,14 @@
             "markers": "python_version >= '3.8'",
             "version": "==1.12"
         },
+        "tomli": {
+            "hashes": [
+                "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc",
+                "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"
+            ],
+            "markers": "python_version < '3.11'",
+            "version": "==2.0.1"
+        },
         "tomlkit": {
             "hashes": [
                 "sha256:5cd82d48a3dd89dee1f9d64420aa20ae65cfbd00668d6f094d7578a78efbb77b",
@@ -1190,7 +1198,7 @@
                 "sha256:83f085bd5ca59c80295fc2a82ab5dac679cbe02b9f33f7d83af68e241bea51b0",
                 "sha256:c1f94d72897edaf4ce775bb7558d5b79d8126906a14ea5ed1635921406c0387a"
             ],
-            "markers": "python_version >= '3.8'",
+            "markers": "python_version < '3.11'",
             "version": "==4.11.0"
         },
         "urllib3": {
