@@ -1,0 +1,6 @@
+[run]
+source = .
+
+omit = 
+    config.py
+    config-3.py

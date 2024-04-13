@@ -5,3 +5,4 @@ black
 mediapipe
 opencv-python
 requests
+coverage

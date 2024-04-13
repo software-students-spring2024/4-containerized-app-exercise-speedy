@@ -55,8 +55,7 @@ def generate_label(image_url):
     return category_name
 
 
-'''
-def determine_emoji(self, hand_label):
+def determine_emoji(hand_label):
     """
     Determines the appropriate emoji based on the given hand gesture label.
     """
@@ -77,7 +76,6 @@ def determine_emoji(self, hand_label):
     elif hand_label == 7:
         return "I love you! 👍"
     return "None"
-'''
 
 
 # run the app
