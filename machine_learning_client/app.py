@@ -92,5 +92,5 @@ def get_image():
 
 # run the app
 if __name__ == "__main__":
-    FLASK_PORT = os.getenv("FLASK_PORT", "5002")
+    FLASK_PORT = os.getenv("FLASK_PORT", "5001")
     app.run(port=FLASK_PORT, host="0.0.0.0")

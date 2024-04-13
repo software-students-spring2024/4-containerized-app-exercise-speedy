@@ -9,7 +9,10 @@ From the root dir, run
 
 `docker compose up --build`
 
-# To build + run docker image locally for web_app + db:
+# To build + run docker containers locally for ml_client + web_app + db:
+
+In one terminal,
+
 `docker network create project4`
 
 `cd web_app`
@@ -18,9 +21,19 @@ From the root dir, run
 
 `docker run -it --rm --name web_app_container -p 5000:5000 --network project4 web_app_image`
 
+In another terminal,
+
+`cd machine_learning_client`
+
+`docker build -t ml_client_image .`
+
+`docker run -it --rm --name ml_client_container -p 5001:5001 --network project4 ml_client_image`
+
+In another another terminal,
+
 `docker run --name mongodb -d -p 27017:27017 --network project4 mongo`
 
-The two containers are now connected through a docker network.
+The three containers are now connected through a docker network.
 
 The web-app image is also available on the Docker Hub at [iltenahmet/web-app:main](https://hub.docker.com/r/iltenahmet/web-app)
 
