@@ -2,3 +2,6 @@ Flask
 pymongo
 pylint
 black
+mediapipe
+opencv-python
+requests

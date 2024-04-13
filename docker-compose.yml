@@ -11,3 +11,9 @@ services:
       - "5000:5000"
     depends_on:
       - mongodb
+  machine_learning_client:
+    build: ./machine_learning_client
+    ports:
+      - "5001:5001"
+    depends_on:
+      - mongodb
