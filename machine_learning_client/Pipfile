@@ -11,6 +11,8 @@ black = "*"
 opencv-python = "*"
 mediapipe = "*"
 requests = "*"
+pytest = "*"
+coverage = "*"
 
 [dev-packages]
 
