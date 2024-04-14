@@ -19,14 +19,6 @@ class Tests:
         actual = True
         assert actual == expected, "Expected True to be equal to True!"
 
-    def test_sanity_check2(self):
-        """
-        Sanity check 1
-        """
-        expected = True
-        actual = True
-        assert actual == expected, "Expected True to be equal to True!"
-
     def test_get_emoji_from_image(self):
         """
         Test get emoji from image
