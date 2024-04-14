@@ -7,6 +7,7 @@ corresponding emoji representation of the gesture.
 """
 
 import os
+import base64
 from bson import ObjectId
 from flask import Flask, request
 import mediapipe as mp
@@ -39,13 +40,22 @@ def generate_label(image_url):
     options = vision.GestureRecognizerOptions(base_options=base_options)
     recognizer = vision.GestureRecognizer.create_from_options(options)
 
+    # Write image to a temporary file for mediapipe to read from
+    image_data = base64.b64decode(image_url.split(",")[1])
+    temp_image_path = "temp_image.jpg"
+    with open(temp_image_path, "wb") as f:
+        f.write(image_data)
+
     # Load the image and recognize the gesture
-    image = mp.Image.create_from_file(image_url)
+    image = mp.Image.create_from_file(temp_image_path)
     recognition_result = recognizer.recognize(image)
 
     # Get the top gesture and its category name
     top_gesture = recognition_result.gestures[0][0]
     category_name = top_gesture.category_name
+
+    # Remove temporary image file
+    os.remove(temp_image_path)
 
     return category_name
 
