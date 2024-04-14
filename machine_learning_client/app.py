@@ -38,11 +38,12 @@ def generate_label(image_url):
     Generates a label for the given image URL using the MediaPipe gesture recognizer model.
     """
 
-    # Download the gesture recognizer model file
-    url = "https://storage.googleapis.com/mediapipe-models/gesture_recognizer/gesture_recognizer/float16/1/gesture_recognizer.task"
-    response = requests.get(url)
-    with open("gesture_recognizer.task", "wb") as file:
-        file.write(response.content)
+    # Download the gesture recognizer model file if not downloaded alreaady
+    if not os.path.isfile("gesture_recognizer.task"):
+        url = "https://storage.googleapis.com/mediapipe-models/gesture_recognizer/gesture_recognizer/float16/1/gesture_recognizer.task"
+        response = requests.get(url)
+        with open("gesture_recognizer.task", "wb") as file:
+            file.write(response.content)
 
     # Create the GestureRecognizer object
     base_options = python.BaseOptions(model_asset_path="gesture_recognizer.task")
