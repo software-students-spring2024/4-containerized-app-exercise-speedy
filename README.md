@@ -51,7 +51,7 @@ The web-app image is also available on the Docker Hub at [iltenahmet/web-app:mai
 
 # To run tests and check code coverage
 
-In the web_app dir or the machine_learning_client dir, run
+From the web_app dir or the machine_learning_client dir, run
 
 `coverage run -m pytest`
 
