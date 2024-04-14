@@ -6,7 +6,8 @@ passes it through the trained model, and determines the
 corresponding emoji representation of the gesture.
 """
 
-from flask import Flask
+from bson import ObjectId
+from flask import Flask, request
 import mediapipe as mp
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
@@ -84,10 +85,22 @@ def determine_emoji(self, hand_label):
 '''
 
 
-def get_image():
-    images = db.images.find().sort([("upload_date", -1)]).limit(1)
-    last_image = images[0]["image_data"]
-    return last_image
+@app.route("/processImage", methods=["POST"])
+def process_image():
+    image_id = request.json.get("image_id")
+    if image_id:
+        # find the image data based on given id
+        image_data = db.images.find_one({"_id": ObjectId(image_id)})["image_data"]
+        # generate ml label MAKE THIS WORK
+        # label_generated = generate_label(image_data) # TODO: UNCOMMENT THIS AND MAKE IT WORK, below is just temporary
+        label_generated = "fuck me 🖕🖕"
+        # update db with the generated label
+        db.images.update_one(
+            {"_id": ObjectId(image_id)}, {"$set": {"mlResult": label_generated}}
+        )
+        return "Image processed successfully", 200
+    else:
+        return "Invalid request", 400
 
 
 # run the app
