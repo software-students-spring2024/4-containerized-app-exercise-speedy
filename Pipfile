@@ -9,6 +9,7 @@ flask = "*"
 pylint = "*"
 black = "*"
 opencv-python = "*"
+coverage = "*"
 
 [dev-packages]
 

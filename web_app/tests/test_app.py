@@ -26,9 +26,7 @@ class Tests:
         """Function testing upload image."""
         response = app.test_client().post(
             "/upload_image",
-            data={
-                "image_data": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/"
-            },
+            data={"image_data": "test"},
         )
         # test if the response code starts with 3 (3xx codes are for redirection)
         first_digit = response.status_code // 100
