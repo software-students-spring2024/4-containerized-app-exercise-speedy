@@ -24,7 +24,12 @@ class Tests:
 
     def test_upload_image(self):
         """Function testing upload image."""
-        response = app.test_client().post("/upload_image", data={"image_data": "test"})
+        response = app.test_client().post(
+            "/upload_image",
+            data={
+                "image_data": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgICAgMCAgIDAwMDBAYEBAQEBAgGBgUGCQgKCgkICQkKDA8MCgsOCwkJDRENDg8QEBEQCgwSExIQEw8QEBD/"
+            },
+        )
         # test if the response code starts with 3 (3xx codes are for redirection)
         first_digit = response.status_code // 100
         assert first_digit == 3
