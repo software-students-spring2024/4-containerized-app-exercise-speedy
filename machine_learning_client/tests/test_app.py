@@ -2,6 +2,7 @@
 file to test app
 """
 
+import base64
 from machine_learning_client.app import app, get_emoji_from_image, generate_label
 
 
@@ -30,16 +31,20 @@ class Tests:
         """
         Test get emoji from image
         """
-        image_url = "./images/test_image1.png"
-        emoji_output = get_emoji_from_image(image_url)
+        image_path = "./images/test_image1.png"
+        with open(image_path, "rb") as image_file:
+            image = "image, " + base64.b64encode(image_file.read()).decode("utf-8")
+        emoji_output = get_emoji_from_image(image)
         assert emoji_output == "Thumb_Up", "Expected emoji output to be 'Thumb_Up'"
 
     def test_generate_label(self):
         """
         Test generate label
         """
-        image_url = "./images/test_image1.png"
-        label = generate_label(image_url)
+        image_path = "./images/test_image1.png"
+        with open(image_path, "rb") as image_file:
+            image = "image, " + base64.b64encode(image_file.read()).decode("utf-8")
+        label = generate_label(image)
         assert label == "Thumb_Up", "Expected emoji label to be 'Thumb_Up'"
 
     def test_process_image(self):
