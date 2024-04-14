@@ -93,7 +93,7 @@ def process_image():
         image_data = db.images.find_one({"_id": ObjectId(image_id)})["image_data"]
         # generate ml label MAKE THIS WORK
         # label_generated = generate_label(image_data) # TODO: UNCOMMENT THIS AND MAKE IT WORK, below is just temporary
-        label_generated = "fuck me 🖕🖕"
+        label_generated = "temp"
         # update db with the generated label
         db.images.update_one(
             {"_id": ObjectId(image_id)}, {"$set": {"mlResult": label_generated}}
