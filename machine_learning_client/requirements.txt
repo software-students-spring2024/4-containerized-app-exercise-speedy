@@ -2,7 +2,7 @@ Flask
 pymongo
 pylint
 black
-mediapipe
+mediapipe == 0.10.9 # see Pipfile to see why this version
 opencv-python
 requests
 coverage
