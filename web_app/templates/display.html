@@ -6,9 +6,9 @@
     {% for image in images|reverse %}
         <div class="col-md-4">
         <div class="card mb-4 shadow-sm">
-            <img src="data:image/jpeg;base64,{{ image.image_data }}" class="card-img-top" alt="{{ image.filename }}">
+            <img src="data:image/jpeg;base64,{{ image.image_data }}" class="card-img-top" alt="{{ image.mlResult }}">
             <div class="card-body">
-            <p class="card-text">{{ image.filename }}</p>
+            <p class="card-text">{{ image.mlResult }}</p>
             </div>
         </div>
         </div>
