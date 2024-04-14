@@ -3,6 +3,16 @@
 ![machine_learning_client CI/CD](https://github.com/software-students-spring2024/4-containerized-app-exercise-speedy/actions/workflows/machine_learning_client.yml/badge.svg)
 ![web_app Docker Image](https://github.com/software-students-spring2024/4-containerized-app-exercise-speedy/actions/workflows/publish-docker-image.yml/badge.svg)
 
+# Real-Time Hand Gesture Recognition Web App
+
+This project is a web application that allows users to take pictures of hand gestures using their device's camera. The pictures are sent to a machine learning model running in a separate container, which analyzes the hand gestures and classifies them into corresponding emojis.
+
+The application consists of three main components running in separate Docker containers:
+
+- **Web App:** This is a Flask web application that provides the user interface. Users can access the web app through their browser, use their device's camera to take pictures of hand gestures, and see the corresponding emoji detected by the machine learning model.
+- **Machine Learning Client:** This is a Python application that runs the machine learning model for hand gesture recognition. When the web app sends a picture of a hand gesture, this client processes the image, passes it through the trained model, and determines the corresponding emoji representation of the gesture.
+- **Database:** A MongoDB database stores the pictures taken by users, the detected emojis, and any other relevant data. Both the web app and the machine learning client interact with this database.
+
 # To build + run:
 
 From the root dir, run
@@ -39,17 +49,9 @@ The three containers are now connected through a docker network.
 
 The web-app image is also available on the Docker Hub at [iltenahmet/web-app:main](https://hub.docker.com/r/iltenahmet/web-app)
 
-# Real-Time Hand Gesture Recognition Web App
-
-This project is a web application that allows users to take pictures of hand gestures using their device's camera. The pictures are sent to a machine learning model running in a separate container, which analyzes the hand gestures and classifies them into corresponding emojis.
-
-The application consists of three main components running in separate Docker containers:
-
-- **Web App:** This is a Flask web application that provides the user interface. Users can access the web app through their browser, use their device's camera to take pictures of hand gestures, and see the corresponding emoji detected by the machine learning model.
-- **Machine Learning Client:** This is a Python application that runs the machine learning model for hand gesture recognition. When the web app sends a picture of a hand gesture, this client processes the image, passes it through the trained model, and determines the corresponding emoji representation of the gesture.
-- **Database:** A MongoDB database stores the pictures taken by users, the detected emojis, and any other relevant data. Both the web app and the machine learning client interact with this database.
-
 # To run tests and check code coverage
+
+In the web_app dir or the machine_learning_client dir, run
 
 `coverage run -m pytest`
 
