@@ -19,7 +19,7 @@ In one terminal,
 
 `docker build -t web_app_image .`
 
-`docker run -it --rm --name web_app_container -p 5000:5000 --network project4 web_app_image`
+`docker run -it --rm --name web_app_container -p 5002:5002 --network project4 web_app_image`
 
 In another terminal,
 
