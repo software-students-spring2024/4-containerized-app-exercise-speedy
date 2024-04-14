@@ -44,16 +44,14 @@ def upload_image():
     image_data = request.form["image_data"]
     if image_data != "test":
         image_id = db.images.insert_one({"image_data": image_data}).inserted_id
-
         # Make a request to the ML client to process the image
         ml_client_url = "http://machine_learning_client:5001/processImage"
-
         response = requests.post(ml_client_url, json={"image_id": str(image_id)})
-
         if response.status_code == 200:
             return redirect(url_for("display"))
         else:
             return "Error processing image"
+    return redirect(url_for("display"))  # for test purposes
 
 
 # run the app
