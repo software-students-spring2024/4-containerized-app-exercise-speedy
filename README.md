@@ -9,6 +9,8 @@ From the root dir, run
 
 `docker compose up --build`
 
+Check localhost:5002 to try the web app.
+
 # To build + run docker containers locally for ml_client + web_app + db:
 
 In one terminal,
