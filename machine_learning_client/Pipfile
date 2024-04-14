@@ -9,8 +9,12 @@ flask = "*"
 pylint = "*"
 black = "*"
 opencv-python = "*"
-mediapipe = "*"
+# specifying mediapipe version to avoid the bug described at:
+# https://github.com/google/mediapipe/issues/5188
+mediapipe = {version="==0.10.9"} 
 requests = "*"
+pytest = "*"
+coverage = "*"
 
 [dev-packages]
 
