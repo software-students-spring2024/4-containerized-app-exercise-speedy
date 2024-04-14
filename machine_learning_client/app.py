@@ -41,9 +41,9 @@ def generate_label(image_url):
     recognizer = vision.GestureRecognizer.create_from_options(options)
 
     # Write image to a temporary file for mediapipe to read from
-    image_data = base64.b64decode(image_url.split(',')[1])
-    temp_image_path = 'temp_image.jpg'
-    with open(temp_image_path, 'wb') as f:
+    image_data = base64.b64decode(image_url.split(",")[1])
+    temp_image_path = "temp_image.jpg"
+    with open(temp_image_path, "wb") as f:
         f.write(image_data)
 
     # Load the image and recognize the gesture
